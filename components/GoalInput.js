@@ -10,20 +10,27 @@ export default function GoalInput(props) {
 
   function addGoalHandler() {
     props.onAddGoal(enteredGoalText);
-    setEnteredGoalText('');
+    setEnteredGoalText("");
   }
 
   return (
-    <Modal visible={props.visible} animationType='slide'>
-    <View style={styles.inputcontainer}>
-      <TextInput
-        style={styles.textinput}
-        placeholder="Your Course Goal !"
-        onChangeText={goalInputHandler}
-        value={enteredGoalText}
-      />
-      <Button title="Add Goal" onPress={addGoalHandler} />
-    </View>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputcontainer}>
+        <TextInput
+          style={styles.textinput}
+          placeholder="Your Course Goal !"
+          onChangeText={goalInputHandler}
+          value={enteredGoalText}
+        />
+        <View style={styles.buttoncontainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={props.onCancel} />
+          </View>
+        </View>
+      </View>
     </Modal>
   );
 }
@@ -31,18 +38,25 @@ export default function GoalInput(props) {
 const styles = StyleSheet.create({
   inputcontainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 24,
+    padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
   },
   textinput: {
     borderWidth: 1,
     borderColor: "#cccccc",
-    width: "70%",
-    marginRight: 8,
+    width: "100%",
     padding: 8,
+  },
+  buttoncontainer: {
+    flexDirection: "row",
+    marginTop: 16,
+  },
+  button: {
+    width: 100,
+    marginHorizontal: 8,
   },
 });
