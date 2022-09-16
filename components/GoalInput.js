@@ -1,4 +1,4 @@
-import { StyleSheet, View, Button, TextInput } from "react-native";
+import { StyleSheet, View, Button, TextInput, Modal } from "react-native";
 import { useState } from "react";
 
 export default function GoalInput(props) {
@@ -14,6 +14,7 @@ export default function GoalInput(props) {
   }
 
   return (
+    <Modal visible={props.visible} animationType='slide'>
     <View style={styles.inputcontainer}>
       <TextInput
         style={styles.textinput}
@@ -23,6 +24,7 @@ export default function GoalInput(props) {
       />
       <Button title="Add Goal" onPress={addGoalHandler} />
     </View>
+    </Modal>
   );
 }
 
